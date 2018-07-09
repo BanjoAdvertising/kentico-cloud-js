@@ -1,6 +1,6 @@
 {
-  "name": "kentico-cloud-delivery",
-  "version": "4.2.1",
+  "name": "banjo-kentico-cloud-delivery",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/Enngage/kentico-cloud-js/tree/master/packages/delivery"
@@ -8,7 +8,7 @@
   "private": false,
   "author": "richard sustek",
   "license": "MIT",
-  "description": "Official Kentico Cloud Delivery SDK",
+  "description": "Fork of Official Kentico Cloud Delivery SDK",
   "keywords": [
     "Kentico",
     "Kentico API",

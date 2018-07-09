@@ -117,6 +117,16 @@ export class QueryService {
     }
 
     /**
+     * Inject a http body response to bypass the inbuilt http client
+     * @param body Body response of external Kentico Cloud request
+     * @param queryConfig QueryConfig object
+     */
+    injectSingleItem<TItem extends ContentItem>(body: string, queryConfig: IItemQueryConfig): ItemResponses.DeliveryItemResponse<TItem> {
+        const response =  <IBaseResponse>{ data: body, response: {} };
+        return this.responseMapper.mapSingleResponse<TItem>(response, queryConfig);
+    }
+
+    /**
     * Gets multiple items from given url
     * @param url Url used to get multiple items
     * @param queryConfig Query configuration
@@ -131,6 +141,16 @@ export class QueryService {
                     return throwError(this.handleError(err));
                 })
             );
+    }
+
+    /**
+     * Inject a http body response to bypass the inbuilt http client
+     * @param body Body response of external Kentico Cloud request
+     * @param queryConfig QueryConfig object
+     */
+    injectMultipleItems<TItem extends ContentItem>(body: string, queryConfig: IItemQueryConfig): ItemResponses.DeliveryItemListingResponse<TItem> {
+        const response =  <IBaseResponse>{ data: body, response: {} };
+        return this.responseMapper.mapMultipleResponse<TItem>(response, queryConfig);
     }
 
     /**

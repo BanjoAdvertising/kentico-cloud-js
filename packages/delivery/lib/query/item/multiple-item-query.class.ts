@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 
 import { IDeliveryClientConfig } from '../../config';
 import { ContentItem, Filters, ItemResponses, Parameters, SortOrder } from '../../models';
-import { QueryService } from '../../services';
+import { QueryService, IBaseResponse } from '../../services';
 import { BaseItemQuery } from './base-item-query.class';
 
 export class MultipleItemQuery<TItem extends ContentItem> extends BaseItemQuery<TItem, ItemResponses.DeliveryItemListingResponse<TItem>> {
@@ -174,5 +174,13 @@ export class MultipleItemQuery<TItem extends ContentItem> extends BaseItemQuery<
      */
     getUrl(): string {
         return super.getMultipleItemsQueryUrl();
+    }
+
+    /**
+    * Inject a http body response to bypass the inbuilt http client
+    * @param body Raw body response of external Kentico Cloud request
+    */
+    injectMultipleItems(body: string): ItemResponses.DeliveryItemListingResponse<TItem> {
+        return super.injectMultipleItems(body);
     }
 }

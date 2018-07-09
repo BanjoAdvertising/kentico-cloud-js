@@ -32,4 +32,12 @@ export class SingleItemQuery<TItem extends ContentItem> extends BaseItemQuery<TI
     getUrl(): string {
         return super.getSingleItemQueryUrl(this.codename);
     }
+
+    /**
+    * Inject a http body response to bypass the inbuilt http client
+    * @param body Raw body response of external Kentico Cloud request
+    */
+    injectSingleItem(body: string): ItemResponses.DeliveryItemResponse<TItem> {
+        return super.injectSingleItem(body);
+    }
 }

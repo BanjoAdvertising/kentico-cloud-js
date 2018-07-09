@@ -53,6 +53,14 @@ export abstract class BaseItemQuery<TItem extends ContentItem, TResponse extends
         return this;
     }
 
+    injectMultipleItems(body: string): ItemResponses.DeliveryItemListingResponse<TItem> {
+        return this.queryService.injectMultipleItems(body, this._queryConfig);
+    }
+
+    injectSingleItem(body: string): ItemResponses.DeliveryItemResponse<TItem> {
+        return this.queryService.injectSingleItem(body, this._queryConfig);
+    }
+
     protected getMultipleItemsQueryUrl(): string {
         const action = '/items';
 
