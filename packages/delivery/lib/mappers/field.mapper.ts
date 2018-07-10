@@ -145,7 +145,6 @@ export class FieldMapper {
         return new Fields.RichTextField(
             field.name,
             field.value, {
-                links: links,
                 resolveHtml: () => richTextResolver.resolveHtml(field.value, {
                     enableAdvancedLogging: this.config.enableAdvancedLogging ? this.config.enableAdvancedLogging : false,
                     typeResolvers: this.config.typeResolvers ? this.config.typeResolvers : [],
@@ -159,7 +158,22 @@ export class FieldMapper {
                     modularContentWrapperClasses: this.config.modularContentResolver && this.config.modularContentResolver.modularContentWrapperClasses
                         ? this.config.modularContentResolver.modularContentWrapperClasses
                         : this.defaultModularContentWrapperClasses
-                })
+                }),
+                resolveModules: () => richTextResolver.resolveModules(field.value, {
+                    enableAdvancedLogging: this.config.enableAdvancedLogging ? this.config.enableAdvancedLogging : false,
+                    typeResolvers: this.config.typeResolvers ? this.config.typeResolvers : [],
+                    richTextHtmlParser: this.richTextHtmlParser,
+                    modularItems: modularItems,
+                    links: links,
+                    queryConfig: queryConfig,
+                    modularContentWrapperTag: this.config.modularContentResolver && this.config.modularContentResolver.modularContentWrapperTag
+                        ? this.config.modularContentResolver.modularContentWrapperTag
+                        : this.defaultModularContentWrapperTag,
+                    modularContentWrapperClasses: this.config.modularContentResolver && this.config.modularContentResolver.modularContentWrapperClasses
+                        ? this.config.modularContentResolver.modularContentWrapperClasses
+                        : this.defaultModularContentWrapperClasses
+                }),
+                links: links
             });
     }
 

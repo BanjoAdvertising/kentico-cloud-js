@@ -98,10 +98,14 @@ export namespace Fields {
          */
         private resolveHtml: () => string;
 
+        private resolveModules: () => {module: string, model: any}[];
+
         /**
         * Resolved html in field - store here once the html was resolved to avoid resolving it multiple times
         */
         private resolvedHtml: string;
+
+        private resolvedModules: { module: string, model: any }[];
 
         /**
         * Type of the field
@@ -126,6 +130,7 @@ export namespace Fields {
             public value: any,
             data: {
                 resolveHtml: () => string,
+                resolveModules: () => {module: string, model: any}[],
                 links: Link[]
             }
         ) {
@@ -141,6 +146,16 @@ export namespace Fields {
             this.resolvedHtml = this.resolveHtml();
 
             return this.resolvedHtml;
+        }
+
+        getModules(): { module: string, model: any }[] {
+            if (this.resolvedModules) {
+                return this.resolvedModules;
+            }
+
+            this.resolvedModules = this.resolveModules();
+
+            return this.resolvedModules;
         }
     }
 

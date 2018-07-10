@@ -77,6 +77,79 @@ export class RichTextResolver {
         return result.resolvedHtml;
     }
 
+    /**
+     * Resolves modular content inside the Rich text field.
+     * Rich text resolved needs to be configured either on the model or query level
+     */
+    resolveModules(
+        html: string,
+        data: {
+            richTextHtmlParser: IRichTextHtmlParser,
+            typeResolvers: TypeResolver[],
+            modularItems: ContentItem[],
+            links: Link[],
+            enableAdvancedLogging: boolean,
+            queryConfig: IItemQueryConfig,
+            modularContentWrapperTag: string,
+            modularContentWrapperClasses: string[]
+        }): {module: string, model: any}[] {
+
+        // prepare config
+        const config: IHtmlResolverConfig = {
+            enableAdvancedLogging: data.enableAdvancedLogging,
+            queryConfig: data.queryConfig,
+            modularContentWrapperTag: data.modularContentWrapperTag,
+            modularContentWrapperClasses: data.modularContentWrapperClasses
+        };
+
+        // todo: here we need to find the resolved modules
+
+        // const result = data.richTextHtmlParser.resolveRichTextField(
+        //     html, {
+        //         getLinkUrl: (itemId: string) => this.getLinkUrl({
+        //             config: config,
+        //             links: data.links,
+        //             itemId: itemId,
+        //             typeResolvers: data.typeResolvers
+        //         }),
+        //         getModularContentHtml: (itemCodename: string) => this.getHtmlOfModularContent({
+        //             itemCodename: itemCodename,
+        //             config: config,
+        //             modularItems: data.modularItems,
+        //         })
+        //     }, {
+        //         enableAdvancedLogging: data.enableAdvancedLogging,
+        //         queryConfig: data.queryConfig,
+        //         modularContentWrapperTag: data.modularContentWrapperTag,
+        //         modularContentWrapperClasses: data.modularContentWrapperClasses
+        //     });
+
+        //return result.resolvedHtml;
+
+        // /{module: string, model: any}[]
+
+        return [ {
+            module: 'rich_html',
+            model: '<p>One <strong>Blah</strong>!</p>'
+        },
+        {
+            module: 'inline_article_quote',
+            model: { blah: 'yus' }
+        },
+        {
+            module: 'rich_html',
+            model: '<p>Two <h3>fdsfsdf</h3></p>'
+        },
+        {
+            module: 'inline_article_quote',
+            model: { blah: 'no' }
+        },
+        {
+            module: 'inline_external_link',
+            model: { url: 'sdfsdfsdfds' }
+        }];
+    }
+
     private getHtmlOfModularContent(data: {
         itemCodename: string,
         config: IHtmlResolverConfig,
