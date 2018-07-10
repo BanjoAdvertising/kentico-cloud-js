@@ -160,18 +160,8 @@ export class FieldMapper {
                         : this.defaultModularContentWrapperClasses
                 }),
                 resolveModules: () => richTextResolver.resolveModules(field.value, {
-                    enableAdvancedLogging: this.config.enableAdvancedLogging ? this.config.enableAdvancedLogging : false,
-                    typeResolvers: this.config.typeResolvers ? this.config.typeResolvers : [],
-                    richTextHtmlParser: this.richTextHtmlParser,
                     modularItems: modularItems,
-                    links: links,
-                    queryConfig: queryConfig,
-                    modularContentWrapperTag: this.config.modularContentResolver && this.config.modularContentResolver.modularContentWrapperTag
-                        ? this.config.modularContentResolver.modularContentWrapperTag
-                        : this.defaultModularContentWrapperTag,
-                    modularContentWrapperClasses: this.config.modularContentResolver && this.config.modularContentResolver.modularContentWrapperClasses
-                        ? this.config.modularContentResolver.modularContentWrapperClasses
-                        : this.defaultModularContentWrapperClasses
+                    links: links
                 }),
                 links: links
             });

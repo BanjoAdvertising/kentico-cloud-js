@@ -1,7 +1,7 @@
 import { FieldInterfaces } from './field-interfaces';
 import { FieldModels } from './field-models';
 import { FieldType } from './field-type';
-import { Link } from '..';
+import { Link, ContentItem } from '..';
 
 export namespace Fields {
 
@@ -98,14 +98,14 @@ export namespace Fields {
          */
         private resolveHtml: () => string;
 
-        private resolveModules: () => {module: string, model: any}[];
+        private resolveModules: () => ContentItem[];
 
         /**
         * Resolved html in field - store here once the html was resolved to avoid resolving it multiple times
         */
         private resolvedHtml: string;
 
-        private resolvedModules: { module: string, model: any }[];
+        private resolvedModules: ContentItem[];
 
         /**
         * Type of the field
@@ -130,7 +130,7 @@ export namespace Fields {
             public value: any,
             data: {
                 resolveHtml: () => string,
-                resolveModules: () => {module: string, model: any}[],
+                resolveModules: () => ContentItem[],
                 links: Link[]
             }
         ) {
@@ -148,7 +148,7 @@ export namespace Fields {
             return this.resolvedHtml;
         }
 
-        getModules(): { module: string, model: any }[] {
+        getModules(): ContentItem[] {
             if (this.resolvedModules) {
                 return this.resolvedModules;
             }

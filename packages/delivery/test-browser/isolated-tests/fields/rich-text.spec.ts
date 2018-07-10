@@ -112,19 +112,8 @@ describe('RichTextField', () => {
             },
         }),
         resolveModules: () => richTextResolver.resolveModules(html, {
-            enableAdvancedLogging: false,
             links: links,
-            modularItems: modularItems,
-            typeResolvers: config.typeResolvers as any,
-            richTextHtmlParser: getParserAdapter(),
-            modularContentWrapperClasses: ['kc-wrapper-class'],
-            modularContentWrapperTag: 'kcelem',
-            queryConfig: {
-                richTextResolver: (item: ActorMock) => {
-                    return `<p class="testing_richtext">${item.firstName.text}</p>`;
-                },
-                linkResolver: (link: Link) => '/actor-rt/' + link.urlSlug
-            },
+            modularItems: modularItems
         })
     });
 
@@ -189,17 +178,8 @@ describe('RichTextField', () => {
                 },
             }),
             resolveModules: () => richTextResolver.resolveModules(html, {
-                enableAdvancedLogging: false,
                 links: links,
-                modularItems: modularItems,
-                typeResolvers: config.typeResolvers as any,
-                richTextHtmlParser: getParserAdapter(),
-                modularContentWrapperClasses: ['kc-wrapper-class'],
-                modularContentWrapperTag: 'kc-item-wrapper',
-                queryConfig: {
-                    richTextResolver: undefined as any,
-                    linkResolver: (link: Link) => '/actor-rt/' + link.urlSlug
-                },
+                modularItems: modularItems
             })
         });
 
