@@ -88,72 +88,7 @@ export class RichTextResolver {
             links: Link[]
         }): ContentItem[] {
 
-        // prepare config
-        // const config: IHtmlResolverConfig = {
-        //     enableAdvancedLogging: data.enableAdvancedLogging,
-        //     queryConfig: data.queryConfig,
-        //     modularContentWrapperTag: data.modularContentWrapperTag,
-        //     modularContentWrapperClasses: data.modularContentWrapperClasses
-        // };
-
         return data.modularItems;
-
-        // todo: here we need to find the resolved modules
-
-        // console.log('kc module modularItems' + data.modularItems);
-
-        // const outdata: {module: string, model: any}[] = [];
-
-        // data.modularItems.forEach((item: ContentItem) => {
-        //     outdata.push({module: item.system.type, model: item });
-        // });
-
-        // return outdata;
-
-        // const result = data.richTextHtmlParser.resolveRichTextField(
-        //     html, {
-        //         getLinkUrl: (itemId: string) => this.getLinkUrl({
-        //             config: config,
-        //             links: data.links,
-        //             itemId: itemId,
-        //             typeResolvers: data.typeResolvers
-        //         }),
-        //         getModularContentHtml: (itemCodename: string) => this.getHtmlOfModularContent({
-        //             itemCodename: itemCodename,
-        //             config: config,
-        //             modularItems: data.modularItems,
-        //         })
-        //     }, {
-        //         enableAdvancedLogging: data.enableAdvancedLogging,
-        //         queryConfig: data.queryConfig,
-        //         modularContentWrapperTag: data.modularContentWrapperTag,
-        //         modularContentWrapperClasses: data.modularContentWrapperClasses
-        //     });
-
-        // return result.resolvedHtml;
-
-        // /{module: string, model: any}[]
-
-        // return [ {
-        //     module: 'rich_html',
-        //     model: '<p>One <strong>Blah</strong>!</p>'
-        // },
-        // {
-        //     module: 'inline_article_quote',
-        //     model: { blah: 'yus' }
-        // },
-        // {
-        //     module: 'rich_html',
-        //     model: '<p>Two <h3>fdsfsdf</h3></p>'
-        // },
-        // {
-        //     module: 'inline_article_quote',
-        //     model: { blah: 'no' }
-        // },
-        // {
-        //     module: 'inline_external_link',
-        //     model: { url: 'sdfsdfsdfds' }
-        // }];
     }
 
     private getHtmlOfModularContent(data: {
